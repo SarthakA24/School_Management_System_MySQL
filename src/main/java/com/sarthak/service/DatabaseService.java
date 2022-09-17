@@ -1,6 +1,8 @@
 package com.sarthak.service;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DatabaseService {
     private static final String URL = "jdbc:mysql://localhost:3306/School";
@@ -14,5 +16,13 @@ public class DatabaseService {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void connect() throws SQLException {
+        connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        if (connection != null)
+            System.out.println("Database Connected!!");
+        else
+            System.err.println("!!Database Connection Failed!!");
     }
 }
