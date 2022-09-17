@@ -7,7 +7,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String address;
-    private String pinCode;
+    private int pinCode;
     private String guardianName;
     private long contactNumber;
     private long guardianContactNumber;
@@ -47,11 +47,11 @@ public class Student {
         this.address = address;
     }
 
-    public String getPinCode() {
+    public int getPinCode() {
         return pinCode;
     }
 
-    public void setPinCode(String pinCode) {
+    public void setPinCode(int pinCode) {
         this.pinCode = pinCode;
     }
 
