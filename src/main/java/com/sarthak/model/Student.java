@@ -10,6 +10,9 @@ public class Student {
     private long contactNumber;
     private long guardianContactNumber;
 
+    public Student() {
+    }
+
     public int getRollNumber() {
         return rollNumber;
     }
