@@ -1,5 +1,7 @@
 package com.sarthak.model;
 
+import java.util.Objects;
+
 public class Student {
     private int rollNumber;
     private String firstName;
@@ -75,5 +77,31 @@ public class Student {
 
     public void setGuardianContactNumber(long guardianContactNumber) {
         this.guardianContactNumber = guardianContactNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student student)) return false;
+        return getRollNumber() == student.getRollNumber() && getContactNumber() == student.getContactNumber() && getGuardianContactNumber() == student.getGuardianContactNumber() && Objects.equals(getFirstName(), student.getFirstName()) && Objects.equals(getLastName(), student.getLastName()) && Objects.equals(getAddress(), student.getAddress()) && Objects.equals(getPinCode(), student.getPinCode()) && Objects.equals(getGuardianName(), student.getGuardianName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRollNumber(), getFirstName(), getLastName(), getAddress(), getPinCode(), getGuardianName(), getContactNumber(), getGuardianContactNumber());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "rollNumber=" + rollNumber +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", pinCode='" + pinCode + '\'' +
+                ", guardianName='" + guardianName + '\'' +
+                ", contactNumber=" + contactNumber +
+                ", guardianContactNumber=" + guardianContactNumber +
+                '}';
     }
 }
