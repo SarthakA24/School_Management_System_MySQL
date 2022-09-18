@@ -15,9 +15,7 @@ public class StudentRepository implements Repository {
      */
     @Override
     public void addStudentData(Connection connection, Student student) throws SQLException {
-        String insertQuery = "INSERT INTO `School`.`Student` " +
-                "(`first_name`, `last_name`, `address`, `pin_code`, `guardian_name`, `contact_number`, `guardian_contact_number`) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String insertQuery = "INSERT INTO `School`.`Student` " + "(`first_name`, `last_name`, `address`, `pin_code`, `guardian_name`, `contact_number`, `guardian_contact_number`) " + "VALUES (?, ?, ?, ?, ?, ?, ?);";
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setString(1, student.getFirstName());
             preparedStatement.setString(2, student.getLastName());

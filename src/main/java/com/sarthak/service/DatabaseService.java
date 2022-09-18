@@ -20,9 +20,7 @@ public class DatabaseService {
 
     public void connect() throws SQLException {
         connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        if (connection != null)
-            System.out.println("Database Connected!!");
-        else
-            System.err.println("!!Database Connection Failed!!");
+        if (connection != null) System.out.println("Database Connected!!");
+        else System.err.println("!!Database Connection Failed!!");
     }
 }

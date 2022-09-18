@@ -93,15 +93,6 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "rollNumber=" + rollNumber +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                ", pinCode='" + pinCode + '\'' +
-                ", guardianName='" + guardianName + '\'' +
-                ", contactNumber=" + contactNumber +
-                ", guardianContactNumber=" + guardianContactNumber +
-                '}';
+        return "Student{" + "rollNumber=" + rollNumber + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", address='" + address + '\'' + ", pinCode='" + pinCode + '\'' + ", guardianName='" + guardianName + '\'' + ", contactNumber=" + contactNumber + ", guardianContactNumber=" + guardianContactNumber + '}';
     }
 }
