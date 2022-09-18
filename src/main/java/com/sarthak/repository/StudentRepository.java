@@ -14,7 +14,9 @@ public class StudentRepository implements Repository {
      */
     @Override
     public void addStudentData(Connection connection, Student student) {
-
+        String insertQuery = "INSERT INTO `School`.`Student` " +
+                "(`first_name`, `last_name`, `address`, `pin_code`, `guardian_name`, `contact_number`, `guardian_contact_number`) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?);";
     }
 
     /**
