@@ -15,9 +15,9 @@ public class Main {
         DatabaseService databaseService = new DatabaseService();
         StudentRepository studentRepository = new StudentRepository();
         int choice;
-        do {
-            try {
-                databaseService.connect();
+        try {
+            databaseService.connect();
+            do {
                 Connection connection = databaseService.getConnection();
                 DisplayService.displayMenu();
                 Scanner scanner = new Scanner(System.in);
@@ -29,6 +29,7 @@ public class Main {
                         System.out.println("Enter the First Name - ");
                         Student student = new Student();
                         student.setRollNumber(0);
+                        scanner.nextLine();
                         student.setFirstName(scanner.nextLine());
                         System.out.println("Enter the Last Name - ");
                         student.setLastName(scanner.nextLine());
@@ -37,6 +38,7 @@ public class Main {
                         System.out.println("Enter the pin code - ");
                         student.setPinCode(scanner.nextInt());
                         System.out.println("Enter the Guardian's Name - ");
+                        scanner.nextLine();
                         student.setGuardianName(scanner.nextLine());
                         System.out.println("Enter Student's contact number - ");
                         student.setContactNumber(scanner.nextLong());
@@ -60,18 +62,19 @@ public class Main {
                         System.out.println("Please enter the Roll Number for the Student to search - ");
                         int rollNumberToSearch = scanner.nextInt();
                         Student studentByRollNumber = studentRepository.searchStudentByRollNumber(connection, rollNumberToSearch);
-                        if (studentByRollNumber == null) {
+                        if (studentByRollNumber.getRollNumber() == 0) {
                             System.out.println("Student not Found with the Roll Number = " + rollNumberToSearch);
                             choice = 0;
+                        } else {
+                            System.out.println(studentByRollNumber);
                         }
-                        System.out.println(studentByRollNumber);
                     }
                     case 4 -> {
                         System.out.println("You have selected - \"4. Remove a student from the school.\"");
                         System.out.println("Please enter the Roll Number for the Student to remove - ");
                         int rollNumberToRemove = scanner.nextInt();
                         Student studentByRollNumber = studentRepository.searchStudentByRollNumber(connection, rollNumberToRemove);
-                        if (studentByRollNumber == null) {
+                        if (studentByRollNumber.getRollNumber() == 0) {
                             System.out.println("Student not Found with the Roll Number = " + rollNumberToRemove);
                             choice = 0;
                         } else {
@@ -84,10 +87,9 @@ public class Main {
                         choice = 0;
                     }
                 }
-            } catch (SQLException e) {
-                System.err.println("!!!Error connecting with database!!!");
-                choice = 0;
-            }
-        } while (choice != 5);
+            } while (choice != 5);
+        } catch (SQLException e) {
+            System.err.println("!!!Error connecting with database!!!");
+        }
     }
 }
