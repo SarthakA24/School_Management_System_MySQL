@@ -17,6 +17,7 @@ public class Main {
         int choice;
         do {
             try {
+                databaseService.connect();
                 Connection connection = databaseService.getConnection();
                 DisplayService.displayMenu();
                 Scanner scanner = new Scanner(System.in);
