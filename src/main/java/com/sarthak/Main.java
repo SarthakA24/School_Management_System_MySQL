@@ -88,8 +88,9 @@ public class Main {
                     }
                 }
             } while (choice != 5);
-        } catch (SQLException e) {
+        } catch (SQLException exception) {
             System.err.println("!!!Error connecting with database!!!");
+            exception.printStackTrace();
         }
     }
 }
