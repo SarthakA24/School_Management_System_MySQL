@@ -80,7 +80,24 @@ public class StudentRepository implements Repository {
      * @return The student details for the given roll number, or a blank Student object if the student is not found
      */
     @Override
-    public Student searchStudentByRollNumber(Connection connection, int rollNumber) {
-        return null;
+    public Student searchStudentByRollNumber(Connection connection, int rollNumber) throws SQLException {
+        String selectQuery = "SELECT * FROM `School`.`Student` WHERE (`roll_number` = ?);";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+            preparedStatement.setInt(1, rollNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Student student = new Student();
+                student.setFirstName(resultSet.getString("first_name"));
+                student.setLastName(resultSet.getString("last_name"));
+                student.setAddress(resultSet.getString("address"));
+                student.setPinCode(resultSet.getInt("pin_code"));
+                student.setGuardianName(resultSet.getString("guardian_name"));
+                student.setContactNumber(Long.parseLong(resultSet.getString("contact_number")));
+                student.setGuardianContactNumber(Long.parseLong(resultSet.getString("guardian_contact_number")));
+                return student;
+            } else {
+                return new Student();
+            }
+        }
     }
 }

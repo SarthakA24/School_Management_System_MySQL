@@ -38,5 +38,5 @@ public interface Repository {
      * @param rollNumber The roll number of the student to search
      * @return The student details for the given roll number, or a blank Student object if the student is not found
      */
-    Student searchStudentByRollNumber(Connection connection, int rollNumber);
+    Student searchStudentByRollNumber(Connection connection, int rollNumber) throws SQLException;
 }
