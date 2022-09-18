@@ -2,9 +2,8 @@ package com.sarthak.repository;
 
 import com.sarthak.model.Student;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository implements Repository {
@@ -38,8 +37,24 @@ public class StudentRepository implements Repository {
      * @return List of Students in the school
      */
     @Override
-    public List<Student> getAllStudentData(Connection connection) {
-        return null;
+    public List<Student> getAllStudentData(Connection connection) throws SQLException {
+        List<Student> studentList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM `School`.`Student`;";
+        try (Statement statement = connection.createStatement()) {
+            ResultSet studentResultSet = statement.executeQuery(selectQuery);
+            while (studentResultSet.next()) {
+                Student student = new Student();
+                student.setFirstName(studentResultSet.getString("first_name"));
+                student.setLastName(studentResultSet.getString("last_name"));
+                student.setAddress(studentResultSet.getString("address"));
+                student.setPinCode(studentResultSet.getInt("pin_code"));
+                student.setGuardianName(studentResultSet.getString("guardian_name"));
+                student.setContactNumber(Long.parseLong(studentResultSet.getString("contact_number")));
+                student.setGuardianContactNumber(Long.parseLong(studentResultSet.getString("guardian_contact_number")));
+                studentList.add(student);
+            }
+        }
+        return studentList;
     }
 
     /**
@@ -49,8 +64,11 @@ public class StudentRepository implements Repository {
      * @param rollNumber The roll number of the student to be deleted
      */
     @Override
-    public void deleteStudentData(Connection connection, int rollNumber) {
+    public void deleteStudentData(Connection connection, int rollNumber) throws SQLException {
+        String deleteQuery = "DELETE FROM `School`.`Student` WHERE (`roll_number` = ?);";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
 
+        }
     }
 
     /**

@@ -21,7 +21,7 @@ public interface Repository {
      * @param connection Connection object for the database
      * @return List of Students in the school
      */
-    List<Student> getAllStudentData(Connection connection);
+    List<Student> getAllStudentData(Connection connection) throws SQLException;
 
     /**
      * This method runs a delete query in the database to delete the student details
@@ -29,7 +29,7 @@ public interface Repository {
      * @param connection Connection object for the database
      * @param rollNumber The roll number of the student to be deleted
      */
-    void deleteStudentData(Connection connection, int rollNumber);
+    void deleteStudentData(Connection connection, int rollNumber) throws SQLException;
 
     /**
      * This method runs a select query in the database to search the student based on the roll number
