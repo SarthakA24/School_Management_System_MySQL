@@ -67,7 +67,8 @@ public class StudentRepository implements Repository {
     public void deleteStudentData(Connection connection, int rollNumber) throws SQLException {
         String deleteQuery = "DELETE FROM `School`.`Student` WHERE (`roll_number` = ?);";
         try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
-
+            preparedStatement.setInt(1, rollNumber);
+            preparedStatement.executeUpdate();
         }
     }
 
