@@ -42,6 +42,7 @@ public class StudentRepository implements Repository {
             ResultSet studentResultSet = statement.executeQuery(selectQuery);
             while (studentResultSet.next()) {
                 Student student = new Student();
+                student.setRollNumber(studentResultSet.getInt("roll_number"));
                 student.setFirstName(studentResultSet.getString("first_name"));
                 student.setLastName(studentResultSet.getString("last_name"));
                 student.setAddress(studentResultSet.getString("address"));
@@ -85,6 +86,7 @@ public class StudentRepository implements Repository {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 Student student = new Student();
+                student.setRollNumber(resultSet.getInt("roll_number"));
                 student.setFirstName(resultSet.getString("first_name"));
                 student.setLastName(resultSet.getString("last_name"));
                 student.setAddress(resultSet.getString("address"));
