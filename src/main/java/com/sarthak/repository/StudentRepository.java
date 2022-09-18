@@ -3,6 +3,8 @@ package com.sarthak.repository;
 import com.sarthak.model.Student;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class StudentRepository implements Repository {
@@ -13,10 +15,20 @@ public class StudentRepository implements Repository {
      * @param student    Student details to be added
      */
     @Override
-    public void addStudentData(Connection connection, Student student) {
+    public void addStudentData(Connection connection, Student student) throws SQLException {
         String insertQuery = "INSERT INTO `School`.`Student` " +
                 "(`first_name`, `last_name`, `address`, `pin_code`, `guardian_name`, `contact_number`, `guardian_contact_number`) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?);";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+            preparedStatement.setString(1, student.getFirstName());
+            preparedStatement.setString(2, student.getLastName());
+            preparedStatement.setString(3, student.getAddress());
+            preparedStatement.setInt(4, student.getPinCode());
+            preparedStatement.setString(5, student.getGuardianName());
+            preparedStatement.setString(6, String.valueOf(student.getContactNumber()));
+            preparedStatement.setString(7, String.valueOf(student.getGuardianContactNumber()));
+            preparedStatement.executeUpdate();
+        }
     }
 
     /**

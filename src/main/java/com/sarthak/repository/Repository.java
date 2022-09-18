@@ -3,6 +3,7 @@ package com.sarthak.repository;
 import com.sarthak.model.Student;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface Repository {
@@ -12,7 +13,7 @@ public interface Repository {
      * @param connection Connection object for the database
      * @param student    Student details to be added
      */
-    void addStudentData(Connection connection, Student student);
+    void addStudentData(Connection connection, Student student) throws SQLException;
 
     /**
      * This method runs a select query in the database to get all details for all the students in the school
