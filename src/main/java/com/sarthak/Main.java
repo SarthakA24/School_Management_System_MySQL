@@ -12,6 +12,10 @@ public class Main {
         DatabaseService databaseService = new DatabaseService();
         StudentRepository studentRepository = new StudentRepository();
         Student student = new Student();
+        int choice = 0;
+        do {
+
+        } while (choice != 0);
         try {
             databaseService.connect();
             Connection connection = databaseService.getConnection();
