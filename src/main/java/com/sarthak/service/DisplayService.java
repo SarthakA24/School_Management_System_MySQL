@@ -1,6 +1,9 @@
 package com.sarthak.service;
 
 public class DisplayService {
+    /**
+     * This method prints the menu for the School
+     */
     public static void displayMenu() {
         System.out.println("=========================");
         System.out.println("Welcome to the School!!");
