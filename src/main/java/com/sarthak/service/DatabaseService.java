@@ -18,6 +18,11 @@ public class DatabaseService {
         return connection;
     }
 
+    /**
+     * This method establishes a connection with the database
+     *
+     * @throws SQLException Throws SQL exception if the database connection fails
+     */
     public void connect() throws SQLException {
         connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         if (connection != null) System.out.println("Database Connected!!");
