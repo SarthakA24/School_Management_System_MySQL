@@ -1,9 +1,5 @@
 package com.sarthak.service;
 
-import com.sarthak.model.Student;
-
-import java.util.List;
-
 public class DisplayService {
     public static void displayMenu() {
         System.out.println("=========================");
@@ -13,10 +9,7 @@ public class DisplayService {
         System.out.println("2. Display all the students in the school.");
         System.out.println("3. Find a student's details.");
         System.out.println("4. Remove a student from the school.");
+        System.out.println("5. Exit");
         System.out.println("=========================");
-    }
-
-    public static void displayStudentData(List<Student> studentList) {
-
     }
 }
