@@ -1,7 +1,7 @@
 package com.sarthak.service;
 
 public class DisplayService {
-    public void displayMenu() {
+    public static void displayMenu() {
         System.out.println("=========================");
         System.out.println("Welcome to the School!!");
         System.out.println("Please select the operation you need to perform - ");
